@@ -2,11 +2,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: eleven-devops-deployment
+  name: indrakpbannad-deployment
   labels:
     app: my-app
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: my-app
@@ -18,8 +18,8 @@ spec:
       imagePullSecrets:
       - name: my-registry-key
       containers:
-      - name: elevendevops-container
-        image: vijaylokesh/my-tomcat:1
+      - name: indrakpbannad-container
+        image: indrakpbannad/sagarci
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -29,7 +29,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
- name: my-elevendevops-service
+ name: my-service
  labels:
    app: my-app
 spec:
@@ -37,7 +37,7 @@ spec:
  ports:
   - targetPort: 8080
     port: 8080
-    nodePort: 30018
+    nodePort: 30022
  selector:
    app: my-app
 
