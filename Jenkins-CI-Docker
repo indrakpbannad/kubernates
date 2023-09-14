@@ -9,7 +9,7 @@ pipeline {
     }
     
 	agent {
-     label 'dockerslave'
+     label 'node1'
   }
   
   stages {
