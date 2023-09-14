@@ -1,6 +1,6 @@
 pipeline {
    agent {
-       label 'dockerslave'
+       label 'node1'
     }
     
     environment {
@@ -8,7 +8,7 @@ pipeline {
     registry_name = "registry.hub.docker.com"
     registry_url = "https://registry.hub.docker.com"
     registryCredential = 'docker'
-    container_name= "indrakpbannad-my-tomcat"
+    container_name= "indrakpbannad-my-tomee"
 	  
     }    
 
