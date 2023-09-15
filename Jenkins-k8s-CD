@@ -8,10 +8,14 @@ pipeline {
 	}
 	
 	 stage('Deploying App to Kubernetes') {
-      steps {
-        script {
-          kubernetesDeploy(configs: "k8s-deployment-service-manifest-file.yaml", kubeconfigId: "k8s")
-        }
+
+        steps {
+               sshagent(['k8s']) {
+             sh "scp -o StrictHostKeyChecking=no  k8s-deployment-service-manifest-file.yaml  ubuntu@13.53.207.164:/home/ubuntu"
+              sh "ssh -o StrictHostKeyChecking=no ubuntu@13.53.207.164 'kubectl apply -f k8s-deployment-service-manifest-file.yaml ' "
+           
+                    
+            }
       }
     }
 	
